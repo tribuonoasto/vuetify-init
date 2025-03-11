@@ -61,22 +61,17 @@ export default {
   methods: {
     ...mapActions(useUserStore, ["login"]),
     async handleLogin() {
-      try {
-        const requestData = {
-          username: this.username,
-          password: this.password,
-        };
+      const requestData = {
+        username: this.username,
+        password: this.password,
+      };
 
-        this.isLoading = true;
-        const response = await this.login(requestData);
-        if (response.code === 200) {
-          this.$router.push("/chat");
-        } else {
-        }
-      } catch (error) {
-      } finally {
-        this.isLoading = false;
+      this.isLoading = true;
+      const response = await this.login(requestData);
+      console.log(response);
+      if (response.code === 200) {
       }
+      this.isLoading = false;
     },
   },
 };
